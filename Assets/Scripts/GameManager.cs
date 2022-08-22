@@ -204,7 +204,7 @@ public class GameManager : MonoBehaviour
         {
             //set the player who's active to be active
             playerWithAction = activePlayers[playerActNum];
-        } 
+        }
         else
         {
             waitWall();
@@ -273,7 +273,7 @@ public class GameManager : MonoBehaviour
             {
                 mage.GetComponent<CircleCollider2D>().enabled = true;
             }
-            
+
         }
     }
 
@@ -284,7 +284,7 @@ public class GameManager : MonoBehaviour
         {
             //while (card == null)
             //{
-                card = blueDeck[Random.Range(0, blueDeck.Count - 1)];
+            card = blueDeck[Random.Range(0, blueDeck.Count - 1)];
             //}
             blueDeck.Remove(card);
         }
@@ -292,7 +292,7 @@ public class GameManager : MonoBehaviour
         {
             //while (card == null)
             //{
-                card = redDeck[Random.Range(0, redDeck.Count - 1)];
+            card = redDeck[Random.Range(0, redDeck.Count - 1)];
             //}
             redDeck.Remove(card);
         }
@@ -305,16 +305,7 @@ public class GameManager : MonoBehaviour
     public void DrawNewCard(GameObject prevCard)
     {
         //find the deck
-        GameObject deck;
-        if (blueTeamWithAction)
-        {
-            deck = blueDeckObj;
-        }
-        else
-        {
-            deck = redDeckObj;
-        }
-
+        GameObject deck = blueTeamWithAction ? blueDeckObj : redDeckObj;
         //create the card at the deck
         GameObject card;
         //this should not be one line but whatever
