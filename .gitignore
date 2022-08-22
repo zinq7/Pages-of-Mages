@@ -42,7 +42,7 @@ bld/
 Generated\ Files/
 
 # build remove
-Build
+Build/*
 *LockFile
 
 # MSTest test Results
