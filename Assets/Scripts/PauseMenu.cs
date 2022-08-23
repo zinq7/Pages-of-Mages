@@ -42,32 +42,40 @@ public class PauseMenu : MonoBehaviour
     public void PauseGame()
     {
         //turn off everything
+        if (game != null)
+        {
+            resetClick = game.turnTransitionScreen.transform.parent.gameObject.GetComponent<InputControl>().waitingForClick;
+            game.turnTransitionScreen.transform.parent.gameObject.GetComponent<InputControl>().waitingForClick = false;
 
-        resetClick = game.turnTransitionScreen.transform.parent.gameObject.GetComponent<InputControl>().waitingForClick;
-        game.turnTransitionScreen.transform.parent.gameObject.GetComponent<InputControl>().waitingForClick = false;
+            foreach (Animator anim in game.playingAnimations)
+            {
+                anim.speed = 0;
+            }
+        }
+
         paused = true;
         pauseWall.SetActive(true);
         pauseButton.SetActive(false);
         resumeButton.SetActive(true);
 
-        foreach (Animator anim in game.playingAnimations)
-        {
-            anim.speed = 0;
-        }
     }
 
     public void ResumeGame()
     {
         //turn on everythign that was turned off
-        game.turnTransitionScreen.transform.parent.gameObject.GetComponent<InputControl>().waitingForClick = resetClick;
+        if (game != null)
+        {
+            game.turnTransitionScreen.transform.parent.gameObject.GetComponent<InputControl>().waitingForClick = resetClick;
+            foreach (Animator anim in game.playingAnimations)
+            {
+                anim.speed = 1;
+            }
+        }
+        
         paused = false;
         pauseWall.SetActive(false);
         pauseButton.SetActive(true);
         resumeButton.SetActive(false);
-        foreach (Animator anim in game.playingAnimations)
-        {
-            anim.speed = 1;
-        }
     }
 
     public void ExitGame()
