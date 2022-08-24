@@ -45,12 +45,16 @@ public class SpellCard : MonoBehaviour
 
     public virtual void AddToDeck()
     {
-        if (!deck.CardSlot()) { return; }
         //DO IMPORTANT STUFF HERE WHERE IT ADDS TO THE DECK, ASSUMING SCENE 2
         if (deck.activeDeck.Find(card => card == gameObject))
         {
             deck.activeDeck.Remove(gameObject);
             gameObject.GetComponent<Image>().color = Color.white;
+        }
+        //check if there's space
+        else if (!deck.CardSlot())
+        {
+            return;
         }
         else
         {
