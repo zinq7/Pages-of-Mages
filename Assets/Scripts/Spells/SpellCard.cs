@@ -7,10 +7,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class SpellCard : MonoBehaviour
 {
     protected GameManager game;
+    protected DeckBuilder deck;
     public List<GameObject> targets;
     public Debuff debuff;
     public Sprite cardBack;
@@ -23,6 +26,37 @@ public class SpellCard : MonoBehaviour
     public virtual void Start()
     {
         game = GameManager.instance;
+        deck = DeckBuilder.instance;
+        if (game != null)
+        {
+            gameObject.GetComponent<Button>().onClick.AddListener(() => { this.CastSpell();});
+        }
+        else if (deck != null)
+        {
+            gameObject.GetComponent<Button>().onClick.AddListener(() => { this.AddToDeck(); });
+        }
+    }
+
+    public virtual void CastSpell()
+    {
+        //the effects of the spell, overriden in childdren
+        Debug.Log("OVERRIDEN IN CHILDDREN");
+    }
+
+    public virtual void AddToDeck()
+    {
+        if (!deck.CardSlot()) { return; }
+        //DO IMPORTANT STUFF HERE WHERE IT ADDS TO THE DECK, ASSUMING SCENE 2
+        if (deck.activeDeck.Find(card => card == gameObject))
+        {
+            deck.activeDeck.Remove(gameObject);
+            gameObject.GetComponent<Image>().color = Color.white;
+        }
+        else
+        {
+            deck.activeDeck.Add(gameObject);
+            gameObject.GetComponent<Image>().color = Color.gray;
+        }
     }
 
     public virtual void ExtraEffects(GameObject caster, GameObject target)

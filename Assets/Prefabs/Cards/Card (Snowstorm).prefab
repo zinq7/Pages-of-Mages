@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -7.75, y: -1.5499878}
-  m_SizeDelta: {x: 3, y: 2}
+  m_SizeDelta: {x: 2.5, y: 1.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2003633719283295317
 Canvas:
@@ -83,7 +83,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 44
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &7082008543087917539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,19 +199,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2021768783080316542}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8978619344101658372}
-        m_TargetAssemblyTypeName: Snowstorm, Assembly-CSharp
-        m_MethodName: CastSpell
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!222 &2565018810364002931
 CanvasRenderer:
   m_ObjectHideFlags: 0

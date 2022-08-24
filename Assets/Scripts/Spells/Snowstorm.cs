@@ -12,7 +12,7 @@ public class Snowstorm : SpellCard
     //edit damage and knockback values in the unity editor
 
     // On Spell cast
-    public void CastSpell()
+    public override void CastSpell()
     {
         //always clear the tiles before doing an action
         game.Clear();

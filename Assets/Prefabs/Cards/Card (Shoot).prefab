@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6348152443893055350
 RectTransform:
   m_ObjectHideFlags: 0
@@ -117,7 +117,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -7.75, y: 0}
-  m_SizeDelta: {x: 3, y: 2}
+  m_SizeDelta: {x: 2.5, y: 1.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3593726477595021757
 Canvas:
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 44
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &6209472035436997162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,10 +258,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.39999998, g: 1, b: 0.4182015, a: 1}
-    m_PressedColor: {r: 0.68609333, g: 0.9528302, b: 0.65979, a: 1}
-    m_SelectedColor: {r: 0.6200918, g: 0.8301887, b: 0.54353863, a: 1}
-    m_DisabledColor: {r: 0.4576956, g: 0.5849056, b: 0.34983978, a: 0.5019608}
+    m_HighlightedColor: {r: 0.8018868, g: 0.64241725, b: 0.44179422, a: 1}
+    m_PressedColor: {r: 0.6981132, g: 0.58453214, b: 0.35169098, a: 1}
+    m_SelectedColor: {r: 0.5943396, g: 0.48371938, b: 0.28259164, a: 1}
+    m_DisabledColor: {r: 0.38679248, g: 0.30271986, b: 0.1766109, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -275,23 +275,11 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 6366425120258534450}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 333903888983254411}
-        m_TargetAssemblyTypeName: ShootSpell, Assembly-CSharp
-        m_MethodName: CastSpell
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!222 &5310157989602880093
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -416,7 +404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6436025039130146092
 RectTransform:
   m_ObjectHideFlags: 0

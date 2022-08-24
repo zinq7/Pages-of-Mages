@@ -83,6 +83,8 @@
     <Compile Include="Assets\Scripts\AnimationBehaviors\Freeze.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\BuildDeckMenu.cs" />
+    <Compile Include="Assets\DeckBuilder.cs" />
+    <Compile Include="Assets\Scripts\AddDeckCard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Misc\pixeloid-font\misc\License.txt" />

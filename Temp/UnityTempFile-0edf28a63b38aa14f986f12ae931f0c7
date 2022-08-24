@@ -334,7 +334,10 @@
 /define:UNITY_STANDALONE_WIN
 /define:UNITY_TEAM_LICENSE
 /define:USE_SEARCH_ENGINE_API
+Assets\BuildDeckMenu.cs
+Assets\DeckBuilder.cs
 Assets\PlayControl.cs
+Assets\Scripts\AddDeckCard.cs
 Assets\Scripts\AnimationBehaviors\EndTP.cs
 Assets\Scripts\AnimationBehaviors\Freeze.cs
 Assets\Scripts\AnimationBehaviors\StartTP.cs

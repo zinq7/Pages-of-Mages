@@ -13,7 +13,7 @@ public class BonkSpell : SpellCard
     
 
     // On Spell cast
-    public void CastSpell()
+    public override void CastSpell()
     {
         //always clear the tiles before doing an action
         game.Clear();
