@@ -40,27 +40,13 @@ public class SpellCard : MonoBehaviour
     public virtual void CastSpell()
     {
         //the effects of the spell, overriden in childdren
-        Debug.Log("OVERRIDEN IN CHILDDREN");
+        Debug.LogWarning("WARNING: NOT OVERRIDEN IN CHILDDREN");
     }
 
     public virtual void AddToDeck()
     {
-        //DO IMPORTANT STUFF HERE WHERE IT ADDS TO THE DECK, ASSUMING SCENE 2
-        if (deck.activeDeck.Find(card => card == gameObject))
-        {
-            deck.activeDeck.Remove(gameObject);
-            gameObject.GetComponent<Image>().color = Color.white;
-        }
-        //check if there's space
-        else if (!deck.CardSlot())
-        {
-            return;
-        }
-        else
-        {
-            deck.activeDeck.Add(gameObject);
-            gameObject.GetComponent<Image>().color = Color.gray;
-        }
+        //Process that in the DeckBuilder for finer control
+        deck.AddToDeck(gameObject);
     }
 
     public virtual void ExtraEffects(GameObject caster, GameObject target)

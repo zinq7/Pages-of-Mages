@@ -10,13 +10,16 @@ using UnityEngine;
 public class ShootSpell : SpellCard
 {
     //edit damage and knockback values in the unity editor
+    public override void Start()
+    {
+        damage = 12;
+    }
 
     // On Spell cast
     public override void CastSpell()
     {
         //always clear the tiles before doing an action
         game.Clear();
-
         Mage casterScript = game.actionPlayerScript;
 
         if (casterScript.state == "free")

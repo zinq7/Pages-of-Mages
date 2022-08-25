@@ -7,8 +7,11 @@ public class DeckBuilder : MonoBehaviour
 {
     public List<GameObject> cards = new List<GameObject>();
     public List<GameObject> activeDeck = new List<GameObject>();
+    public List<GameObject> deckCardSlots = new List<GameObject>();
     public static DeckBuilder instance;
-    public GameObject horizontalList;
+    public GameObject horizontalListObj;
+    public GameObject deckCardObj;
+    public GameObject deckCardArea;
     public GameObject scrollArea;
     private GameObject horizontal;
 
@@ -42,6 +45,15 @@ public class DeckBuilder : MonoBehaviour
 
             FindCardHome(liveCard, i);
         }
+
+        horizontal.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition = 1; //scroll to the top
+
+        //add the deck building zone
+        for (int i = 0; i < 12; i++)
+        {
+            GameObject obj = Instantiate(deckCardObj, deckCardArea.transform);
+            deckCardSlots.Add(obj);
+        }
     }
 
     void FormatCard(ref GameObject card)
@@ -55,8 +67,36 @@ public class DeckBuilder : MonoBehaviour
 
     void AddCard(GameObject card)
     {
-        Debug.Log("Gaming");
-        Debug.Log(card);
+        int index = activeDeck.IndexOf(card);
+        deckCardSlots[index].transform.GetChild(0).GetComponent<Text>().text = card.name;
+    }
+
+    void RemoveCard(GameObject card)
+    {
+
+    }
+
+    public void AddToDeck(GameObject card)
+    {
+        //find if you can add a card, and if so, do
+        if (activeDeck.Find(crd => crd == card))
+        {
+            activeDeck.Remove(card);
+            card.GetComponent<Image>().color = Color.white;
+            AddCard(card);
+
+        }
+        //check if there's space
+        else if (!CardSlot())
+        {
+            return;
+        }
+        else
+        {
+            activeDeck.Add(card);
+            card.GetComponent<Image>().color = Color.gray;
+            RemoveCard(card);
+        }
     }
 
     public bool CardSlot()
@@ -74,11 +114,9 @@ public class DeckBuilder : MonoBehaviour
 
     void FindCardHome(GameObject card, int cardNum)
     {
-        int cellNum = (int)Mathf.Floor(cardNum / 6f);
-
-        if (cardNum % 6 == 0)
+        if (cardNum % 5 == 0)
         {
-            horizontal = Instantiate(horizontalList);
+            horizontal = Instantiate(horizontalListObj);
             horizontal.transform.SetParent(scrollArea.transform, false);
         }
 
