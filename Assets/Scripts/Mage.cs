@@ -304,7 +304,11 @@ public class Mage : MonoBehaviour
         }
         List<GameObject> tilesInRange = new List<GameObject>();
 
-        if (directional == true)
+        if (range == 0)
+        {
+            tilesInRange.Add(Physics2D.Raycast(transform.position, Vector3.zero, 0.1f, LayerMask.NameToLayer("ground")).transform.gameObject);
+        } 
+        else if (directional == true)
         {
             List<RaycastHit2D> hits = RaycastAllAround(range, 3);
             foreach (RaycastHit2D hit in hits)

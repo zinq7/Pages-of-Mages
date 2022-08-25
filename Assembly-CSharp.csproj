@@ -75,7 +75,6 @@
     <Compile Include="Assets\Scripts\Debuffs\Confused.cs" />
     <Compile Include="Assets\Scripts\Spells\BonkSpell.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
-    <Compile Include="Assets\Scripts\AddDeckCard.cs" />
     <Compile Include="Assets\Scripts\AnimationBehaviors\Unfreeze.cs" />
     <Compile Include="Assets\DeckBuilder.cs" />
     <Compile Include="Assets\Scripts\SetText.cs" />

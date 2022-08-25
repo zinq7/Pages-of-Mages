@@ -60,15 +60,12 @@ public class DeckBuilder : MonoBehaviour
     {
         card.transform.Rotate(0, 0, 90);
         card.transform.localScale = new Vector3(cardWidth, cardHeight, 1);
-        card.transform.GetChild(0).gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
-        card.transform.GetChild(0).gameObject.AddComponent<AddDeckCard>();
-        Debug.Log("added the script");
     }
 
     void AddCard(GameObject card)
     {
         int index = activeDeck.IndexOf(card);
-        deckCardSlots[index].transform.GetChild(0).GetComponent<Text>().text = card.name;
+        deckCardSlots[index].transform.GetChild(0).GetComponent<Text>().text = "Hoodle Poodel";
     }
 
     void RemoveCard(GameObject card)
