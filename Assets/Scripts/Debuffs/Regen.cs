@@ -26,4 +26,14 @@ public class Regen : Debuff
             sprt.color = Color.white;
         }
     }
+    
+    public Regen(int severity, GameObject mage)
+    {
+        SpriteRenderer sprt = mage.GetComponent<SpriteRenderer>();
+        sprt.color = Color.green;
+        timeLeft = severity;
+        mage.GetComponent<Mage>().AddEffect(severity * 2);
+
+        fxName = "regen";
+    }
 }
