@@ -253,6 +253,10 @@ public class GameManager : MonoBehaviour
 
     public void PlayAnimation(Animator anim, string animName)
     {
+        if (anim.HasState(0, Animator.StringToHash(animName)))
+        {
+            Debug.Log("hasState");
+        }
         anim.enabled = true;
         anim.Play(Animator.StringToHash(animName));
         playingAnimations.Add(anim);

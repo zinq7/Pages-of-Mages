@@ -1,5 +1,5 @@
 /*
- * Description: Slash! (one damage, one knockback)
+ * Description: Shooot! (one damage, two range omni)
  * Author: Ben Farmilo
  * Date: 2022/08/16
  */
@@ -10,10 +10,6 @@ using UnityEngine;
 public class ShootSpell : SpellCard
 {
     //edit damage and knockback values in the unity editor
-    public override void Start()
-    {
-        damage = 12;
-    }
 
     // On Spell cast
     public override void CastSpell()

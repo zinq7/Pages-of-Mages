@@ -303,11 +303,19 @@ public class Mage : MonoBehaviour
             hitColor = Color.red;
         }
         List<GameObject> tilesInRange = new List<GameObject>();
+        List<GameObject> hittableMages = new List<GameObject>();
 
         if (range == 0)
         {
-            tilesInRange.Add(Physics2D.Raycast(transform.position, Vector3.zero, 0.1f, LayerMask.NameToLayer("ground")).transform.gameObject);
-        } 
+            //find your tile, make it shootable, make you the target
+            GameObject tile = game.boardGenerator.activeTiles.Find(tile => tile.transform.position == transform.position);
+            tile.GetComponent<BoardTile>().shootable = true;
+            tile.GetComponent<SpriteRenderer>().color = hitColor;
+            GetComponent<CircleCollider2D>().enabled = false;
+            hittableMages.Add(gameObject);
+            return hittableMages;
+        }
+
         else if (directional == true)
         {
             List<RaycastHit2D> hits = RaycastAllAround(range, 3);
@@ -352,7 +360,6 @@ public class Mage : MonoBehaviour
         //remove your tile from being hittable
         tilesInRange.Remove(tilesInRange.Find(tile => tile.transform.position == transform.position));
 
-        List<GameObject> hittableMages = new List<GameObject>();
 
         foreach (GameObject tile in tilesInRange)
         {
@@ -511,7 +518,7 @@ public class Mage : MonoBehaviour
         string animation = spell.spellAnim;
         Vector3 directionOfAttack;
 
-        if (spell.hitAll == false)
+        if (spell.hitAll == false && spell.spellAnim.Contains("NoRot"))
         {
             //set the rotation of the weapon
             directionOfAttack = weapon.transform.position - destination;
@@ -528,16 +535,24 @@ public class Mage : MonoBehaviour
             target.GetComponent<Mage>().TakeHit(spell.damage, directionOfAttack, spell.knockback);
             spell.ExtraEffects(gameObject, target);
         }
+        else if (spell.spellAnim.Contains("NoRot") && spell.hitAll == false)
+        {
+            target = spell.targets.Find(mage => mage.transform.position == destination);
+            target.GetComponent<Mage>().TakeHit(spell.damage, Vector3.zero, spell.knockback);
+            spell.ExtraEffects(gameObject, target);
+        }
         else
         {
             foreach (GameObject enemy in spell.targets)
             {
-                //find the angle of attack (for knockback)
+                //find the angle of attack (for knockback) (and i guess for rotation i dont care
                 directionOfAttack = weapon.transform.position - enemy.transform.position;
                 //hit em
                 enemy.GetComponent<Mage>().TakeHit(spell.damage, directionOfAttack, spell.knockback);
                 spell.ExtraEffects(gameObject, enemy);
             }
+
+            directionOfAttack = Vector3.zero;
         }
 
 
@@ -583,6 +598,6 @@ public class Mage : MonoBehaviour
         transform.position = new Vector3(12, 12, 12);
         dead = true;
         Destroy(gameObject);
-        
+
     }
 }

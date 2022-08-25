@@ -31,7 +31,6 @@ public class FireBallSpell : SpellCard
     {
         //give em some BURN
         target.GetComponent<Mage>().StatusEffects.Add(new Burn(2, target));
-
         //always remove the card
         RemoveCard();
     }
