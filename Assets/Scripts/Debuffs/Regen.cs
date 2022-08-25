@@ -32,7 +32,6 @@ public class Regen : Debuff
         SpriteRenderer sprt = mage.GetComponent<SpriteRenderer>();
         sprt.color = Color.green;
         timeLeft = severity;
-        mage.GetComponent<Mage>().AddEffect(severity * 2);
 
         fxName = "regen";
     }
