@@ -1053,9 +1053,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 19962307}
-        m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
-        m_MethodName: StopAllCoroutines
+      - m_Target: {fileID: 1576153910}
+        m_TargetAssemblyTypeName: PlayControl, Assembly-CSharp
+        m_MethodName: EditPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PassAndPlay.unity
     guid: 1586565b1ee1df948bf25107ca134d0f
+  - enabled: 1
+    path: Assets/Scenes/EditDeck.unity
+    guid: 1487d35ac9effd94eb5c0c0094808b8d
   m_configObjects: {}

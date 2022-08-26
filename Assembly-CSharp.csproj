@@ -57,8 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Debuffs\Debuff.cs" />
-    <Compile Include="Assets\PlayControl.cs" />
+    <Compile Include="Assets\Scripts\PlayControl.cs" />
     <Compile Include="Assets\Scripts\PlayingCard.cs" />
+    <Compile Include="Assets\Scripts\Debuffs\Regen.cs" />
     <Compile Include="Assets\Scripts\Spells\Snowstorm.cs" />
     <Compile Include="Assets\Scripts\MovingPosition.cs" />
     <Compile Include="Assets\Scripts\Mage.cs" />
@@ -68,15 +69,16 @@
     <Compile Include="Assets\Scripts\Spells\SlashSpell.cs" />
     <Compile Include="Assets\Scripts\Debuffs\Burn.cs" />
     <Compile Include="Assets\Scripts\Expand.cs" />
-    <Compile Include="Assets\BuildDeckMenu.cs" />
+    <Compile Include="Assets\Scripts\BuildDeckMenu.cs" />
     <Compile Include="Assets\Scripts\AnimationBehaviors\EndTP.cs" />
     <Compile Include="Assets\Scripts\Debuffs\Frozen.cs" />
     <Compile Include="Assets\Scripts\Spells\ShootSpell.cs" />
     <Compile Include="Assets\Scripts\Debuffs\Confused.cs" />
     <Compile Include="Assets\Scripts\Spells\BonkSpell.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\Spells\GrowthSpell.cs" />
     <Compile Include="Assets\Scripts\AnimationBehaviors\Unfreeze.cs" />
-    <Compile Include="Assets\DeckBuilder.cs" />
+    <Compile Include="Assets\Scripts\DeckBuilder.cs" />
     <Compile Include="Assets\Scripts\SetText.cs" />
     <Compile Include="Assets\Scripts\Spells\SpellCard.cs" />
     <Compile Include="Assets\Scripts\BoardTile.cs" />
@@ -84,8 +86,6 @@
     <Compile Include="Assets\Scripts\InputControl.cs" />
     <Compile Include="Assets\Scripts\AnimationBehaviors\Freeze.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Spells\GrowthSpell.cs" />
-    <Compile Include="Assets\Scripts\Debuffs\Regen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Misc\pixeloid-font\misc\License.txt" />

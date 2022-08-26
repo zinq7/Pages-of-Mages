@@ -284,7 +284,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 351305248}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2138414340}
+        m_TargetAssemblyTypeName: DeckBuilder, Assembly-CSharp
+        m_MethodName: SaveDeck
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &351305248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1971,10 +1983,15 @@ MonoBehaviour:
   - {fileID: 7749508482991250376, guid: 842c702c72fa63b4394c780d2a6a3015, type: 3}
   - {fileID: 8988730659777404045, guid: 909687960765fc74e9a322c65d81465a, type: 3}
   - {fileID: 5251724739126919311, guid: 7f108846b1cfab949963470b34c88a7f, type: 3}
-  - {fileID: 2987033618269810553, guid: 747b337a9ef1f4a46b3d0548a0fc86f3, type: 3}
+  - {fileID: 5444983856205091092, guid: a02e2c3bdfc7e364dac9b8da599bbf7b, type: 3}
   - {fileID: 1662318994722299157, guid: 6c2068c45c228384f9ad9bd338878ca1, type: 3}
   - {fileID: 8988730659777404045, guid: 909687960765fc74e9a322c65d81465a, type: 3}
   - {fileID: 5251724739126919311, guid: 7f108846b1cfab949963470b34c88a7f, type: 3}
+  - {fileID: 2987033618269810553, guid: 747b337a9ef1f4a46b3d0548a0fc86f3, type: 3}
+  - {fileID: 1662318994722299157, guid: 6c2068c45c228384f9ad9bd338878ca1, type: 3}
+  - {fileID: 7749508482991250376, guid: 842c702c72fa63b4394c780d2a6a3015, type: 3}
+  - {fileID: 8988730659777404045, guid: 909687960765fc74e9a322c65d81465a, type: 3}
+  - {fileID: 5444983856205091092, guid: a02e2c3bdfc7e364dac9b8da599bbf7b, type: 3}
   - {fileID: 2987033618269810553, guid: 747b337a9ef1f4a46b3d0548a0fc86f3, type: 3}
   - {fileID: 1662318994722299157, guid: 6c2068c45c228384f9ad9bd338878ca1, type: 3}
   - {fileID: 7749508482991250376, guid: 842c702c72fa63b4394c780d2a6a3015, type: 3}
@@ -1988,11 +2005,7 @@ MonoBehaviour:
   - {fileID: 2987033618269810553, guid: 747b337a9ef1f4a46b3d0548a0fc86f3, type: 3}
   - {fileID: 1662318994722299157, guid: 6c2068c45c228384f9ad9bd338878ca1, type: 3}
   - {fileID: 7749508482991250376, guid: 842c702c72fa63b4394c780d2a6a3015, type: 3}
-  - {fileID: 8988730659777404045, guid: 909687960765fc74e9a322c65d81465a, type: 3}
-  - {fileID: 5251724739126919311, guid: 7f108846b1cfab949963470b34c88a7f, type: 3}
-  - {fileID: 2987033618269810553, guid: 747b337a9ef1f4a46b3d0548a0fc86f3, type: 3}
-  - {fileID: 1662318994722299157, guid: 6c2068c45c228384f9ad9bd338878ca1, type: 3}
-  - {fileID: 7749508482991250376, guid: 842c702c72fa63b4394c780d2a6a3015, type: 3}
+  - {fileID: 5444983856205091092, guid: a02e2c3bdfc7e364dac9b8da599bbf7b, type: 3}
   activeDeck: []
   deckCardSlots: []
   horizontalListObj: {fileID: 3244760865855571621, guid: 22f8dad870db707418c524be2c8be45f, type: 3}

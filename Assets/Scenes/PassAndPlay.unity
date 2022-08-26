@@ -1805,7 +1805,7 @@ MonoBehaviour:
   - {fileID: 7749508482991250376, guid: 842c702c72fa63b4394c780d2a6a3015, type: 3}
   - {fileID: 5251724739126919311, guid: 7f108846b1cfab949963470b34c88a7f, type: 3}
   - {fileID: 2987033618269810553, guid: 747b337a9ef1f4a46b3d0548a0fc86f3, type: 3}
-  - {fileID: 2987033618269810553, guid: 747b337a9ef1f4a46b3d0548a0fc86f3, type: 3}
+  - {fileID: 5444983856205091092, guid: a02e2c3bdfc7e364dac9b8da599bbf7b, type: 3}
   spawnPos:
   - {x: -5, y: 4, z: 0}
   - {x: -5, y: 0, z: 0}
