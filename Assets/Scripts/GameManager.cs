@@ -11,6 +11,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using UnityEngine.SceneManagement;
+using DeckExporter;
 
 public class GameManager : MonoBehaviour
 {
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
         }
 
         //make it so it doesn't die upon loading a new stage (useful)
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     void SpecialFirstCall()
@@ -63,8 +64,21 @@ public class GameManager : MonoBehaviour
 
         int counter = 0;
 
+
+        
+
         //generate the board
         boardGenerator.GenerateBoard(new List<int> { 6, 5, 6, 5, 6 }, 20, 3, 1);
+
+        //load the blue deck
+        blueDeck = DeckExporter.DeckExporter.LoadDeckFile();
+
+        //Shuffle<GameObject>(blueDeck);
+
+        foreach (GameObject obj in blueDeck)
+        {
+            Debug.Log(obj.name);
+        }
 
         //add blue and red hands
         foreach (GameObject card in startHand)
@@ -304,6 +318,20 @@ public class GameManager : MonoBehaviour
         card.SetActive(true);
 
         return card;
+    }
+
+    public void Shuffle<T>(IList list)
+    {
+        System.Random rng = new System.Random();
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            T value = (T)list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
     }
 
     public void DrawNewCard(GameObject prevCard)

@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Debuffs\Burn.cs" />
     <Compile Include="Assets\Scripts\Expand.cs" />
     <Compile Include="Assets\Scripts\BuildDeckMenu.cs" />
+    <Compile Include="Assets\DeckSaving\DeckExporter.cs" />
     <Compile Include="Assets\Scripts\AnimationBehaviors\EndTP.cs" />
     <Compile Include="Assets\Scripts\Debuffs\Frozen.cs" />
     <Compile Include="Assets\Scripts\Spells\ShootSpell.cs" />
@@ -85,7 +86,9 @@
     <Compile Include="Assets\Scripts\AnimationBehaviors\StopAfterFinish.cs" />
     <Compile Include="Assets\Scripts\InputControl.cs" />
     <Compile Include="Assets\Scripts\AnimationBehaviors\Freeze.cs" />
+    <Compile Include="Assets\Scripts\Dissapear.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\deck.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Misc\pixeloid-font\misc\License.txt" />
