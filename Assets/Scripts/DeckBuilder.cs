@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using DeckExporter;
 
 public class DeckBuilder : MonoBehaviour
 {
     public List<GameObject> cards = new List<GameObject>();
     public List<GameObject> activeDeck = new List<GameObject>();
+    public List<string> activeDeckIDs = new List<string>();
     public List<GameObject> deckCardSlots = new List<GameObject>();
     public static DeckBuilder instance;
     public GameObject horizontalListObj;
     public GameObject deckCardObj;
     public GameObject deckCardArea;
     public GameObject scrollArea;
+    public GameObject tooManyCardsObj;
+
     private GameObject horizontal;
 
     public float cardWidth;
@@ -55,6 +59,7 @@ public class DeckBuilder : MonoBehaviour
             GameObject obj = Instantiate(deckCardObj, deckCardArea.transform);
             deckCardSlots.Add(obj);
         }
+
     }
 
     void FormatCard(ref GameObject card)
@@ -95,6 +100,7 @@ public class DeckBuilder : MonoBehaviour
         {
             RemoveCard(activeDeck.IndexOf(card));
             activeDeck.Remove(card);
+            activeDeckIDs.Remove(card.GetComponentInChildren<Text>().text);
             card.GetComponent<Image>().color = Color.white;
 
         }
@@ -106,6 +112,7 @@ public class DeckBuilder : MonoBehaviour
         else
         {
             activeDeck.Add(card);
+            activeDeckIDs.Add(card.GetComponentInChildren<Text>().text); //the first text found is the title on the card
             card.GetComponent<Image>().color = Color.gray;
             AddCard(card);
         }
@@ -137,20 +144,22 @@ public class DeckBuilder : MonoBehaviour
 
     public void SaveDeck()
     {
-        Debug.Log(File.ReadAllText("C:/Users/16132/Documents/DataOfMages/Gamer.txt"));
-        if (!File.Exists("./Build/Pages Of Mages_Data/Game.txt"))
+        if (activeDeck.Count < 12)
         {
-            File.CreateText("./Build/Pages Of Mages_Data/Game.txt");
+            //shows when theres too few cards
+            tooManyCardsObj.GetComponent<Dissapear>().ShowMessage();
+            return;
         }
 
-        string number = System.Convert.ToString(Random.Range(0f, 100f) / 100f);
-        File.WriteAllText("./Build/Pages Of Mages_Data/Game.txt", number);
-
-        Debug.Log(File.ReadAllText("./Build/Pages Of Mages_Data/Game.txt"));
+        DeckExporter.DeckExporter.SaveDeckFile(activeDeckIDs);
     }
 
     public void LoadDeck()
     {
-
+        //not actually the load deck but a debug
+        foreach(string id in activeDeckIDs)
+        {
+            Debug.Log(id);
+        }
     }
 }
