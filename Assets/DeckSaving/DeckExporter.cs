@@ -14,31 +14,32 @@ namespace DeckExporter
     {
 
         static List<GameObject> loadedDeck = new List<GameObject>();
-        public static void SaveDeckFile(List<string> names)
+        public static void SaveDeckFile(List<CardID> cards)
         {
             loadedDeck.Clear();
 
-            List<GameObject> deck = CardStringToGameObject(names);
+            List<GameObject> deck = CardStringToGameObject(cards);
 
-            deck deck1 = new deck(names, "hooo");//hoo is name
+            deck deck1 = new deck(cards, "_LastDeck");//_LastDeck is the name
+            
             string jsonDeck = JsonUtility.ToJson(deck1);
 
 
             Debug.Log(jsonDeck);
 
             Debug.Log(deck.Count);
-            Debug.Log(names.Count);
+            Debug.Log(cards.Count);
 
             loadedDeck = deck;
           
             string savePath = Application.persistentDataPath;
-            File.WriteAllText(savePath + "/hooo.json", jsonDeck, UTF8Encoding.UTF8);
+            File.WriteAllText(savePath + "/_LastDeck.json", jsonDeck, UTF8Encoding.UTF8);
         }
 
         public static List<GameObject> LoadDeckFile()
         {
             List<string> savedDecks = new List<string>();
-            string[] h = Directory.GetFiles(Application.persistentDataPath);
+            string[] h = Directory.GetFiles(Application.persistentDataPath); //h = all files in the folder. _LastDeck should be the first
             savedDecks.AddRange(h);
 
             foreach (string deck in savedDecks)
@@ -55,25 +56,51 @@ namespace DeckExporter
 
             if (loadedDeck.Count == 0)
             {
-                loadedDeck = jsonIDsToDeck(Directory.GetFiles(Application.persistentDataPath)[0]);    
+                loadedDeck = JsonIDsToDeck(Directory.GetFiles(Application.persistentDataPath)[0]);    
             }
 
             return loadedDeck;
         }
 
-        static List<GameObject> jsonIDsToDeck(string jsonDeckPath)
+        public static List<int> LoadDeckFileIDs()
         {
-            string jsonDeck = File.ReadAllText(jsonDeckPath);
+            List<int> ids = new List<int>();
+            string[] h = Directory.GetFiles(Application.persistentDataPath);
+            List<string> hList = new List<string>();
+            hList.AddRange(h);
+            string path = hList.Find(path => path.Contains("LastDeck"));
+
+            string jsonDeck = File.ReadAllText(path); //read all text in the json file
+            deck loadedDeck = JsonUtility.FromJson<deck>(jsonDeck); //parse it into a deck file
+            Debug.Log(loadedDeck.deckName);
+
+            foreach (CardID crdID in loadedDeck.cards)
+            {
+                ids.Add(crdID.cardID); // add the id of the card to the return list
+            }
+
+            return ids; //return
+        }
+
+        static List<GameObject> JsonIDsToDeck(string jsonDeckPath)
+        {
+            string jsonDeck = File.ReadAllText(jsonDeckPath); //read all text in the json file
             Debug.Log(jsonDeck);
-            deck loadedDeck = JsonUtility.FromJson<deck>(jsonDeck);
+            deck loadedDeck = JsonUtility.FromJson<deck>(jsonDeck); //parse it into a deck file
             Debug.Log(loadedDeck);
             Debug.Log(loadedDeck.cards);
 
-            return CardStringToGameObject(loadedDeck.cards); ;
+            return CardStringToGameObject(loadedDeck.cards); //return the associated objects with the names
         }
 
-        static List<GameObject> CardStringToGameObject(List<string> names)
+        static List<GameObject> CardStringToGameObject(List<CardID> cards)
         {
+            List<string> names = new List<string>();
+            foreach (CardID crd in cards)
+            {
+                names.Add(crd.cardName);
+            }
+
             List<GameObject> allCards = new List<GameObject>();
             List<GameObject> deck = new List<GameObject>();
             allCards.AddRange(Resources.LoadAll<GameObject>("Cards"));

@@ -11,6 +11,7 @@ using UnityEngine.UI;
 public class PlayingCard : MonoBehaviour
 {
     public string team;
+    public int id;
     public Sprite back;
     private Sprite front;
     private Image sprt;

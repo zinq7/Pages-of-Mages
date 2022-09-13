@@ -9,7 +9,7 @@ public class DeckBuilder : MonoBehaviour
 {
     public List<GameObject> cards = new List<GameObject>();
     public List<GameObject> activeDeck = new List<GameObject>();
-    public List<string> activeDeckIDs = new List<string>();
+    public List<CardID> activeDeckIDs = new List<CardID>(); //list of every card and position you have clicked
     public List<GameObject> deckCardSlots = new List<GameObject>();
     public static DeckBuilder instance;
     public GameObject horizontalListObj;
@@ -38,18 +38,24 @@ public class DeckBuilder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        List<GameObject> tempCards = new List<GameObject>();
+
         //add all the cards
         for (int i = 0; i < cards.Count; i++)
         {
             GameObject card = cards[i];
             GameObject liveCard = Instantiate(card);
+            liveCard.GetComponentInParent<PlayingCard>().id = i;
             cards.RemoveAt(i);
             cards.Insert(i, liveCard);
+            tempCards.Add(liveCard); //add the card part to the array
 
             FormatCard(ref liveCard);
 
             FindCardHome(liveCard, i);
         }
+
+        
 
         horizontal.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition = 1; //scroll to the top
 
@@ -60,6 +66,30 @@ public class DeckBuilder : MonoBehaviour
             deckCardSlots.Add(obj);
         }
 
+        List<int> clickIDs = DeckExporter.DeckExporter.LoadDeckFileIDs(); //load the previously selected cards
+        foreach (int i in clickIDs)
+        {
+            Debug.Log(i);
+        }
+
+        foreach (GameObject clkCrd in tempCards)
+        {
+            Debug.Log(clickIDs.Exists(lid => lid == clkCrd.GetComponentInParent<PlayingCard>().id));
+            if (clickIDs.Exists(lid => lid == clkCrd.GetComponentInParent<PlayingCard>().id))
+
+            {
+                AddToDeck(clkCrd.transform.GetChild(0).gameObject);
+            }
+        }
+
+        /*
+        foreach (int click in clickIDs) //finally, simulate Clicks for cards which need it
+        {
+            //probably backwards for the list to iterate through but whatever
+            GameObject clickCard = tempCards.Find(card => card.GetComponentInParent<PlayingCard>().id == click);
+            if (clickCard != null) { clickCard.GetComponent<SlashSpell>().AddToDeck(); }
+        } */
+        
     }
 
     void FormatCard(ref GameObject card)
@@ -100,19 +130,21 @@ public class DeckBuilder : MonoBehaviour
         {
             RemoveCard(activeDeck.IndexOf(card));
             activeDeck.Remove(card);
-            activeDeckIDs.Remove(card.GetComponentInChildren<Text>().text);
+            activeDeckIDs.Remove(activeDeckIDs.Find(CardID => CardID.cardID == card.GetComponentInParent<PlayingCard>().id));
             card.GetComponent<Image>().color = Color.white;
 
         }
         //check if there's space
         else if (!CardSlot())
         {
+            Debug.Log("haha");
             return;
         }
         else
         {
+            Debug.Log("nono");
             activeDeck.Add(card);
-            activeDeckIDs.Add(card.GetComponentInChildren<Text>().text); //the first text found is the title on the card
+            activeDeckIDs.Add(new CardID(card.GetComponentInParent<PlayingCard>().id, card.GetComponentInChildren<Text>().text)); //the first text found is the title on the card
             card.GetComponent<Image>().color = Color.gray;
             AddCard(card);
         }
@@ -157,9 +189,5 @@ public class DeckBuilder : MonoBehaviour
     public void LoadDeck()
     {
         //not actually the load deck but a debug
-        foreach(string id in activeDeckIDs)
-        {
-            Debug.Log(id);
-        }
     }
 }

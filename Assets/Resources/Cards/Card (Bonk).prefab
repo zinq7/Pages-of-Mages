@@ -412,6 +412,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0e67c52ac75234dba6b4952dfd3f5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardName: bonk
   team: 
+  id: 0
   back: {fileID: 21300000, guid: 6d67b3e34e4e8724cb19b14882476290, type: 3}

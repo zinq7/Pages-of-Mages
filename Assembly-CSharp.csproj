@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Debuffs\Debuff.cs" />
     <Compile Include="Assets\Scripts\PlayControl.cs" />
+    <Compile Include="Assets\Scripts\deck.cs" />
     <Compile Include="Assets\Scripts\PlayingCard.cs" />
     <Compile Include="Assets\Scripts\Debuffs\Regen.cs" />
     <Compile Include="Assets\Scripts\Spells\Snowstorm.cs" />
@@ -88,7 +89,7 @@
     <Compile Include="Assets\Scripts\AnimationBehaviors\Freeze.cs" />
     <Compile Include="Assets\Scripts\Dissapear.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\deck.cs" />
+    <Compile Include="Assets\Scripts\CardID.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Misc\pixeloid-font\misc\License.txt" />

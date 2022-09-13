@@ -6,6 +6,7 @@ ScriptsOnlyBuild:
     - BonkSpell
     - BuildDeckMenu
     - DeckBuilder
+    - Dissapear
     - EndTP
     - Expand
     - FireBallSpell
@@ -28,11 +29,8 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
-    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
-    - UnityEditor.Tilemaps.GridPaletteBrushes
-    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
@@ -93,41 +91,43 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1736}
     - Class: 114
-      Script: {instanceID: 2152}
+      Script: {instanceID: 2154}
     - Class: 114
-      Script: {instanceID: 2218}
+      Script: {instanceID: 2220}
     - Class: 114
-      Script: {instanceID: 2694}
+      Script: {instanceID: 2696}
     - Class: 114
-      Script: {instanceID: 2718}
+      Script: {instanceID: 2720}
     - Class: 114
-      Script: {instanceID: 2870}
+      Script: {instanceID: 2872}
     - Class: 114
-      Script: {instanceID: 3100}
+      Script: {instanceID: 3102}
     - Class: 114
-      Script: {instanceID: 3108}
+      Script: {instanceID: 3110}
     - Class: 114
-      Script: {instanceID: 3206}
+      Script: {instanceID: 3208}
     - Class: 114
-      Script: {instanceID: 3364}
+      Script: {instanceID: 3368}
     - Class: 114
-      Script: {instanceID: 3484}
+      Script: {instanceID: 3488}
     - Class: 114
-      Script: {instanceID: 3886}
+      Script: {instanceID: 3890}
     - Class: 114
-      Script: {instanceID: 3934}
+      Script: {instanceID: 3938}
     - Class: 114
-      Script: {instanceID: 4014}
-    - Class: 114
-      Script: {instanceID: 4054}
+      Script: {instanceID: 4018}
     - Class: 114
       Script: {instanceID: 4058}
     - Class: 114
-      Script: {instanceID: 4724}
+      Script: {instanceID: 4062}
     - Class: 114
-      Script: {instanceID: 4762}
+      Script: {instanceID: 4728}
     - Class: 114
-      Script: {instanceID: 4872}
+      Script: {instanceID: 4766}
+    - Class: 114
+      Script: {instanceID: 4876}
+    - Class: 114
+      Script: {instanceID: 5804}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -178,17 +178,31 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1674}
     - Class: 114
-      Script: {instanceID: 2694}
+      Script: {instanceID: 2154}
     - Class: 114
-      Script: {instanceID: 2870}
+      Script: {instanceID: 2220}
     - Class: 114
-      Script: {instanceID: 3108}
+      Script: {instanceID: 2696}
     - Class: 114
-      Script: {instanceID: 3142}
+      Script: {instanceID: 2720}
     - Class: 114
-      Script: {instanceID: 3364}
+      Script: {instanceID: 2872}
     - Class: 114
-      Script: {instanceID: 3484}
+      Script: {instanceID: 3102}
+    - Class: 114
+      Script: {instanceID: 3110}
+    - Class: 114
+      Script: {instanceID: 3144}
+    - Class: 114
+      Script: {instanceID: 3368}
+    - Class: 114
+      Script: {instanceID: 3488}
+    - Class: 114
+      Script: {instanceID: 3938}
+    - Class: 114
+      Script: {instanceID: 4018}
+    - Class: 114
+      Script: {instanceID: 4062}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -239,55 +253,55 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1456}
     - Class: 114
-      Script: {instanceID: 2152}
+      Script: {instanceID: 2154}
     - Class: 114
-      Script: {instanceID: 2218}
+      Script: {instanceID: 2220}
     - Class: 114
-      Script: {instanceID: 2602}
+      Script: {instanceID: 2604}
     - Class: 114
-      Script: {instanceID: 2682}
+      Script: {instanceID: 2684}
     - Class: 114
-      Script: {instanceID: 2694}
+      Script: {instanceID: 2696}
     - Class: 114
-      Script: {instanceID: 2718}
+      Script: {instanceID: 2720}
     - Class: 114
-      Script: {instanceID: 2758}
+      Script: {instanceID: 2760}
     - Class: 114
-      Script: {instanceID: 2870}
+      Script: {instanceID: 2872}
     - Class: 114
-      Script: {instanceID: 3100}
+      Script: {instanceID: 3102}
     - Class: 114
-      Script: {instanceID: 3108}
+      Script: {instanceID: 3110}
     - Class: 114
-      Script: {instanceID: 3142}
+      Script: {instanceID: 3144}
     - Class: 114
-      Script: {instanceID: 3342}
+      Script: {instanceID: 3344}
     - Class: 114
-      Script: {instanceID: 3364}
+      Script: {instanceID: 3368}
     - Class: 114
-      Script: {instanceID: 3484}
+      Script: {instanceID: 3488}
     - Class: 114
-      Script: {instanceID: 3934}
+      Script: {instanceID: 3938}
     - Class: 114
-      Script: {instanceID: 4014}
-    - Class: 114
-      Script: {instanceID: 4054}
+      Script: {instanceID: 4018}
     - Class: 114
       Script: {instanceID: 4058}
     - Class: 114
-      Script: {instanceID: 4530}
+      Script: {instanceID: 4062}
     - Class: 114
-      Script: {instanceID: 4742}
+      Script: {instanceID: 4534}
     - Class: 114
-      Script: {instanceID: 5452}
+      Script: {instanceID: 4746}
     - Class: 114
-      Script: {instanceID: 5606}
+      Script: {instanceID: 5456}
     - Class: 114
-      Script: {instanceID: 5668}
+      Script: {instanceID: 5610}
     - Class: 114
-      Script: {instanceID: 5770}
+      Script: {instanceID: 5672}
     - Class: 114
-      Script: {instanceID: 5880}
+      Script: {instanceID: 5774}
+    - Class: 114
+      Script: {instanceID: 5886}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -801,7 +815,7 @@ ScriptsOnlyBuild:
     className: ControlTrack
   - hash:
       serializedVersion: 2
-      Hash: 9f32058efc8e9aebeefac4043e959f13
+      Hash: 4965060fc9a241d8366109d3ef47ba07
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DeckBuilder
@@ -943,6 +957,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: GridLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 6bd32e9c84375b5d1b44694344acb325
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Dissapear
   - hash:
       serializedVersion: 2
       Hash: abf1930d8126d0b2e00e9449129a0190

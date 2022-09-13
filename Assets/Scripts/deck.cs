@@ -5,9 +5,10 @@ using UnityEngine;
 public class deck
 {
     public string deckName;
-    public List<string> cards;
+    [field: SerializeField]
+    public List<CardID> cards;
 
-    public deck(List<string> crads, string name)
+    public deck(List<CardID> crads, string name)
     {
         cards = crads;
         deckName = name;
