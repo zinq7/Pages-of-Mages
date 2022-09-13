@@ -70,6 +70,11 @@ namespace DeckExporter
             hList.AddRange(h);
             string path = hList.Find(path => path.Contains("LastDeck"));
 
+            if (path == null)
+            {
+                return ids;
+            }
+
             string jsonDeck = File.ReadAllText(path); //read all text in the json file
             deck loadedDeck = JsonUtility.FromJson<deck>(jsonDeck); //parse it into a deck file
             Debug.Log(loadedDeck.deckName);
