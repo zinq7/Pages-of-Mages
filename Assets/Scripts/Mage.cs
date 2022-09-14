@@ -518,7 +518,7 @@ public class Mage : MonoBehaviour
         string animation = spell.spellAnim;
         Vector3 directionOfAttack;
 
-        if (spell.hitAll == false && spell.spellAnim.Contains("NoRot"))
+        if (spell.hitAll == false && !spell.spellAnim.Contains("NoRot"))
         {
             //set the rotation of the weapon
             directionOfAttack = weapon.transform.position - destination;
