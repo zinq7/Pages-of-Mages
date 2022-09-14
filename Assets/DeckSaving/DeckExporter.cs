@@ -38,25 +38,24 @@ namespace DeckExporter
 
         public static List<GameObject> LoadDeckFile()
         {
+            loadedDeck.Clear(); //clear the previous deck
+
             List<string> savedDecks = new List<string>();
             string[] h = Directory.GetFiles(Application.persistentDataPath); //h = all files in the folder. _LastDeck should be the first
             savedDecks.AddRange(h);
+            string lastDeckPath = "haha not a path"; //save lastDeckPath
 
             foreach (string deck in savedDecks)
             {
-                if (deck.Contains(".json"))
+                if (deck.Contains("LastDeck"))
                 {
-                    string name1 = deck.Replace(Application.persistentDataPath, "");
-                    string name2 = name1.Replace(".json", "");
-                    string name = name2.Replace("\\", "");
-
-                    Debug.Log(name);
+                    lastDeckPath = deck; //set the 
                 }
             }
 
             if (loadedDeck.Count == 0)
             {
-                loadedDeck = JsonIDsToDeck(Directory.GetFiles(Application.persistentDataPath)[0]);    
+                loadedDeck = JsonIDsToDeck(lastDeckPath); //get the lastDeck 
             }
 
             return loadedDeck;
@@ -126,8 +125,14 @@ namespace DeckExporter
                     }
                 }
             }
+            DebugPog();
 
             return deck;
+        }
+
+        static void DebugPog()
+        {
+            Debug.Log("Pog");
         }
     }
 }

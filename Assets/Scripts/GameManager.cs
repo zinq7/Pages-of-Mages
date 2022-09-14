@@ -62,23 +62,13 @@ public class GameManager : MonoBehaviour
         //what happens when the first GameManager is created
         Debug.Log("hello world");
 
-        int counter = 0;
-
-
-        
+        int counter = 0;       
 
         //generate the board
         boardGenerator.GenerateBoard(new List<int> { 6, 5, 6, 5, 6 }, 20, 3, 1);
 
         //load the blue deck
         blueDeck = DeckExporter.DeckExporter.LoadDeckFile();
-
-        //Shuffle<GameObject>(blueDeck);
-
-        foreach (GameObject obj in blueDeck)
-        {
-            Debug.Log(obj.name);
-        }
 
         //add blue and red hands
         foreach (GameObject card in startHand)
@@ -297,27 +287,27 @@ public class GameManager : MonoBehaviour
 
     public GameObject DeckCard(bool blue)
     {
-        GameObject card = null;
+        GameObject crd = null;
         if (blue)
         {
             //while (card == null)
             //{
-            card = blueDeck[Random.Range(0, blueDeck.Count - 1)];
+            crd = blueDeck[Random.Range(0, blueDeck.Count - 1)];
             //}
-            blueDeck.Remove(card);
+            blueDeck.Remove(crd);
         }
         else
         {
             //while (card == null)
             //{
-            card = redDeck[Random.Range(0, redDeck.Count - 1)];
+            crd = redDeck[Random.Range(0, redDeck.Count - 1)];
             //}
-            redDeck.Remove(card);
+            redDeck.Remove(crd);
         }
 
-        card.SetActive(true);
+        crd.SetActive(true);
 
-        return card;
+        return crd;
     }
 
     public void Shuffle<T>(IList list)

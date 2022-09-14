@@ -29,8 +29,11 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
+    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
+    - UnityEditor.Tilemaps.GridPaletteBrushes
+    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
@@ -419,7 +422,7 @@ ScriptsOnlyBuild:
     className: TMP_FontAsset
   - hash:
       serializedVersion: 2
-      Hash: ddbd37200cd0471cbbdbdb9bda6525cb
+      Hash: e88472d0acfdfea08d4f6a697a47824b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayingCard
@@ -815,7 +818,7 @@ ScriptsOnlyBuild:
     className: ControlTrack
   - hash:
       serializedVersion: 2
-      Hash: 4965060fc9a241d8366109d3ef47ba07
+      Hash: 09efa52e0f5623e9c308773c0df2ddc5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DeckBuilder
