@@ -414,4 +414,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 
   id: 0
+  clicked: 0
   back: {fileID: 21300000, guid: 6d67b3e34e4e8724cb19b14882476290, type: 3}

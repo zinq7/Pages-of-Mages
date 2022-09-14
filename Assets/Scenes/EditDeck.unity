@@ -2614,7 +2614,7 @@ MonoBehaviour:
   deckCardArea: {fileID: 1822082296}
   scrollArea: {fileID: 1817829090}
   tooManyCardsObj: {fileID: 1887798608}
-  colorAlternator: {fileID: 0}
+  colorAlternator: {fileID: 1050632019}
   editBlueDeck: 0
   cardWidth: 1.5
   cardHeight: 1.5

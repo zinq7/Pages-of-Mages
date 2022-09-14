@@ -107,24 +107,14 @@ public class GameManager : MonoBehaviour
         //create the cards (but make them invisible)
         for (int i = 0; i < redDeck.Count; i++)
         {
-            GameObject card = Instantiate(redDeck[i], redCards.transform);
-            card.SetActive(false);
-            redDeck.RemoveAt(i);
-            redDeck.Insert(i, card);
-            card.transform.position = redDeckObj.transform.position;
-            card.GetComponent<PlayingCard>().team = "red";
-            card.transform.Rotate(0, 0, 180f);
+            FormatCard(redDeck[i], redCards.transform, ref redDeck, i, redDeckObj.transform.position, "red", false);
         }
 
         //repeat for blue
         for (int i = 0; i < blueDeck.Count; i++)
         {
-            GameObject card = Instantiate(blueDeck[i], blueCards.transform);
-            card.SetActive(false);
-            blueDeck.RemoveAt(i);
-            blueDeck.Insert(i, card);
-            card.transform.position = blueDeckObj.transform.position;
-            card.GetComponent<PlayingCard>().team = "blue";
+            FormatCard(blueDeck[i], blueCards.transform, ref blueDeck, i, blueDeckObj.transform.position, "blue", true);
+            
         }
 
         //create all six mages
@@ -312,6 +302,18 @@ public class GameManager : MonoBehaviour
         crd.SetActive(true);
 
         return crd;
+    }
+
+    public void FormatCard(GameObject cardType, Transform cardParent, ref List<GameObject> deck, int i, Vector3 deckPosition, string team, bool blue)
+    {
+        //format the card to the deck
+        GameObject card = Instantiate(cardType, cardParent);
+        card.SetActive(false);
+        deck.RemoveAt(i);
+        deck.Insert(i, card);
+        card.transform.position = deckPosition;
+        card.GetComponent<PlayingCard>().team = team;
+        if (!blue) card.transform.Rotate(0f, 0f, 180f); //if it's red rotate it so...
     }
 
     public void Shuffle<T>(IList list)

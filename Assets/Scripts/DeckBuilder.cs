@@ -192,6 +192,7 @@ public class DeckBuilder : MonoBehaviour
         Text txt = colorAlternator.GetComponent<Text>();
         txt.text = editBlueDeck ? "blue" : "red";
         txt.color = editBlueDeck ? new Color(0.6117647f, 8431373f, 8392158f) : new Color(0.8392158f, 0.6039216f, 0.6117647f);
+        scrollArea.GetComponentInParent<Image>().color = editBlueDeck ? Color.white : new Color(1, 0.75f, 0.75f);     
 
         //now click every card, doi?
         List<int> clickIDs = DeckExporter.DeckExporter.LoadDeckFileIDs(editBlueDeck); //load the previously selected cards
