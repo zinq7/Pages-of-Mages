@@ -14,13 +14,18 @@ namespace DeckExporter
     {
 
         static List<GameObject> loadedDeck = new List<GameObject>();
-        public static void SaveDeckFile(List<CardID> cards)
+        const string BLUEDECKFILE = "_LastDeck_B";
+        const string REDDECKFILE = "_LastDeck_R";
+        static string deckFile;
+        public static void SaveDeckFile(List<CardID> cards, bool blue = true)
         {
+            GetColorDeck(blue); //affect the right color
+
             loadedDeck.Clear();
 
             List<GameObject> deck = CardStringToGameObject(cards);
 
-            deck deck1 = new deck(cards, "_LastDeck");//_LastDeck is the name
+            deck deck1 = new deck(cards, deckFile);//_LastDeck is the name
             
             string jsonDeck = JsonUtility.ToJson(deck1);
 
@@ -33,12 +38,13 @@ namespace DeckExporter
             loadedDeck = deck;
           
             string savePath = Application.persistentDataPath;
-            File.WriteAllText(savePath + "/_LastDeck.json", jsonDeck, UTF8Encoding.UTF8);
+            File.WriteAllText(savePath + "/" + deckFile + ".json", jsonDeck, UTF8Encoding.UTF8);
         }
 
-        public static List<GameObject> LoadDeckFile()
+        public static List<GameObject> LoadDeckFile(bool blue = true)
         {
-            loadedDeck.Clear(); //clear the previous deck
+            List<GameObject> returnDeck = new List<GameObject>();
+            GetColorDeck(blue); //affect the right color
 
             List<string> savedDecks = new List<string>();
             string[] h = Directory.GetFiles(Application.persistentDataPath); //h = all files in the folder. _LastDeck should be the first
@@ -47,27 +53,29 @@ namespace DeckExporter
 
             foreach (string deck in savedDecks)
             {
-                if (deck.Contains("LastDeck"))
+                if (deck.Contains(deckFile))
                 {
                     lastDeckPath = deck; //set the 
                 }
             }
 
-            if (loadedDeck.Count == 0)
+            if (returnDeck.Count == 0)
             {
-                loadedDeck = JsonIDsToDeck(lastDeckPath); //get the lastDeck 
+                returnDeck = JsonIDsToDeck(lastDeckPath); //get the lastDeck 
             }
 
-            return loadedDeck;
+            return returnDeck;
         }
 
-        public static List<int> LoadDeckFileIDs()
+        public static List<int> LoadDeckFileIDs(bool blue = true)
         {
+            GetColorDeck(blue); //affect the right color
+
             List<int> ids = new List<int>();
             string[] h = Directory.GetFiles(Application.persistentDataPath);
             List<string> hList = new List<string>();
             hList.AddRange(h);
-            string path = hList.Find(path => path.Contains("LastDeck"));
+            string path = hList.Find(path => path.Contains(deckFile)); // get the lastDeck path
 
             if (path == null)
             {
@@ -125,14 +133,18 @@ namespace DeckExporter
                     }
                 }
             }
-            DebugPog();
 
             return deck;
         }
 
         static void DebugPog()
         {
-            Debug.Log("Pog");
+            Debug.Log("Pog"); //logs pog to see if something went somewhere
+        }
+
+        static void GetColorDeck(bool blue)
+        {
+            deckFile = (blue) ? BLUEDECKFILE : REDDECKFILE; //set the deck to the color
         }
     }
 }

@@ -12,6 +12,7 @@ public class PlayingCard : MonoBehaviour
 {
     public string team;
     public int id;
+    public bool clicked;
     public Sprite back;
     private Sprite front;
     private Image sprt;

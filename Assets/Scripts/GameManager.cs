@@ -68,7 +68,10 @@ public class GameManager : MonoBehaviour
         boardGenerator.GenerateBoard(new List<int> { 6, 5, 6, 5, 6 }, 20, 3, 1);
 
         //load the blue deck
-        blueDeck = DeckExporter.DeckExporter.LoadDeckFile();
+        blueDeck = DeckExporter.DeckExporter.LoadDeckFile(true);
+        Debug.Log(blueDeck.Count);
+        redDeck = DeckExporter.DeckExporter.LoadDeckFile(false);
+        Debug.Log(blueDeck.Count);
 
         //add blue and red hands
         foreach (GameObject card in startHand)
@@ -112,6 +115,7 @@ public class GameManager : MonoBehaviour
             card.GetComponent<PlayingCard>().team = "red";
             card.transform.Rotate(0, 0, 180f);
         }
+
         //repeat for blue
         for (int i = 0; i < blueDeck.Count; i++)
         {

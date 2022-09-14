@@ -11,15 +11,18 @@ public class DeckBuilder : MonoBehaviour
     public List<GameObject> activeDeck = new List<GameObject>();
     public List<CardID> activeDeckIDs = new List<CardID>(); //list of every card and position you have clicked
     public List<GameObject> deckCardSlots = new List<GameObject>();
+    List<GameObject> tempCards = new List<GameObject>();
     public static DeckBuilder instance;
     public GameObject horizontalListObj;
     public GameObject deckCardObj;
     public GameObject deckCardArea;
     public GameObject scrollArea;
     public GameObject tooManyCardsObj;
+    public GameObject colorAlternator;
 
     private GameObject horizontal;
 
+    public bool editBlueDeck;
     public float cardWidth;
     public float cardHeight;
 
@@ -38,7 +41,7 @@ public class DeckBuilder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        List<GameObject> tempCards = new List<GameObject>();
+        editBlueDeck = true; //when loading the scene, begin editing bluedeck
 
         //add all the cards
         for (int i = 0; i < cards.Count; i++)
@@ -67,28 +70,8 @@ public class DeckBuilder : MonoBehaviour
         }
 
         List<int> clickIDs = DeckExporter.DeckExporter.LoadDeckFileIDs(); //load the previously selected cards
-        foreach (int i in clickIDs)
-        {
-            Debug.Log(i);
-        }
+        ClickTempCardsFromID(clickIDs); //Click them
 
-        foreach (GameObject clkCrd in tempCards)
-        {
-            Debug.Log(clickIDs.Exists(lid => lid == clkCrd.GetComponentInParent<PlayingCard>().id));
-            if (clickIDs.Exists(lid => lid == clkCrd.GetComponentInParent<PlayingCard>().id))
-
-            {
-                AddToDeck(clkCrd.transform.GetChild(0).gameObject);
-            }
-        }
-
-        /*
-        foreach (int click in clickIDs) //finally, simulate Clicks for cards which need it
-        {
-            //probably backwards for the list to iterate through but whatever
-            GameObject clickCard = tempCards.Find(card => card.GetComponentInParent<PlayingCard>().id == click);
-            if (clickCard != null) { clickCard.GetComponent<SlashSpell>().AddToDeck(); }
-        } */
         
     }
 
@@ -132,22 +115,24 @@ public class DeckBuilder : MonoBehaviour
             activeDeck.Remove(card);
             activeDeckIDs.Remove(activeDeckIDs.Find(CardID => CardID.cardID == card.GetComponentInParent<PlayingCard>().id));
             card.GetComponent<Image>().color = Color.white;
+            card.GetComponentInParent<PlayingCard>().clicked = false;
 
         }
         //check if there's space
         else if (!CardSlot())
         {
-            Debug.Log("haha");
             return;
         }
         else
         {
-            Debug.Log("nono");
             activeDeck.Add(card);
             activeDeckIDs.Add(new CardID(card.GetComponentInParent<PlayingCard>().id, card.GetComponentInChildren<Text>().text)); //the first text found is the title on the card
             card.GetComponent<Image>().color = Color.gray;
             AddCard(card);
+            card.GetComponentInParent<PlayingCard>().clicked = true;
         }
+
+       
     }
 
     public bool CardSlot()
@@ -183,11 +168,47 @@ public class DeckBuilder : MonoBehaviour
             return;
         }
 
-        DeckExporter.DeckExporter.SaveDeckFile(activeDeckIDs);
+        DeckExporter.DeckExporter.SaveDeckFile(activeDeckIDs, editBlueDeck);
     }
 
     public void LoadDeck()
     {
         //not actually the load deck but a debug
+    }
+
+    public void ChangeColor()
+    {
+        //to begin: unclick every card
+        foreach (GameObject card in tempCards)
+        {
+            if (card.GetComponentInParent<PlayingCard>().clicked == true)
+            {
+                AddToDeck(card.transform.GetChild(0).gameObject);
+            }
+        }
+
+        editBlueDeck = !editBlueDeck; //flip the deck that's being edited
+
+        Text txt = colorAlternator.GetComponent<Text>();
+        txt.text = editBlueDeck ? "blue" : "red";
+        txt.color = editBlueDeck ? new Color(0.6117647f, 8431373f, 8392158f) : new Color(0.8392158f, 0.6039216f, 0.6117647f);
+
+        //now click every card, doi?
+        List<int> clickIDs = DeckExporter.DeckExporter.LoadDeckFileIDs(editBlueDeck); //load the previously selected cards
+
+        ClickTempCardsFromID(clickIDs);
+    }
+
+    public void ClickTempCardsFromID(List<int> ids)
+    {
+        //search for cards with matching ids and click em'
+        foreach (GameObject clkCrd in tempCards)
+        {
+            if (ids.Exists(lid => lid == clkCrd.GetComponentInParent<PlayingCard>().id))
+                //if a card with the same ID exists, click it
+            {
+                AddToDeck(clkCrd.transform.GetChild(0).gameObject);
+            }
+        }
     }
 }
