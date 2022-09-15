@@ -97,10 +97,7 @@ namespace DeckExporter
         static List<GameObject> JsonIDsToDeck(string jsonDeckPath)
         {
             string jsonDeck = File.ReadAllText(jsonDeckPath); //read all text in the json file
-            Debug.Log(jsonDeck);
             deck loadedDeck = JsonUtility.FromJson<deck>(jsonDeck); //parse it into a deck file
-            Debug.Log(loadedDeck);
-            Debug.Log(loadedDeck.cards);
 
             return CardStringToGameObject(loadedDeck.cards); //return the associated objects with the names
         }
