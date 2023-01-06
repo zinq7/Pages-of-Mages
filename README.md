@@ -20,3 +20,6 @@ Todo:
 - Implement deck import and export system
 - Add cards and characters
 - Spriting
+
+## Why?
+Because I figured it would be fun and act as an efficient way to familiarize myself with the Unity engine. I enjoy card games, and I figured creating my own would allow full creative control and make it a whole lot more *interesting*.
