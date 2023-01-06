@@ -1,5 +1,5 @@
 # Pages-of-Mages
-![DeckBuilder](https://imgur.com/a/5UOI82J)
+[Imgur](https://imgur.com/aHnlALy)
 
 ## What is it?
 Pages of Mages is a 2D deckbuilding video game where players use a variety of spells in order to control avatars and win in a 1 on 1 combat. Made using unity 2020.3.30f1. 
